@@ -1,6 +1,11 @@
 import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function MovieCard({ data }) {
+    const nav = useNavigate();
+    function go() {
+        nav(`/moviedet/${data.id}`, { state: data });
+    }
     return (
         <div className="card" style={{ width: "18rem" }}>
             <img className="card-img-top" src={"https://image.tmdb.org/t/p/w500/" + data.poster_path} />
@@ -9,9 +14,10 @@ function MovieCard({ data }) {
                 <p className="card-text">
                     {data.overview}
                 </p>
-                <a href="#" className="btn btn-primary">
+                <button className="btn btn-primary" onClick={go}> go to</button>
+                {/* <Link to={`/moviedet/${data.id}`} className="btn btn-primary">
                     go to
-                </a>
+                </Link> */}
             </div>
         </div>
     )

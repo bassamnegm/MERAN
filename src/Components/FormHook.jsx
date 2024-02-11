@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 import './form.css'
 import { useForm } from 'react-hook-form'
+import { useLocation, useNavigate } from 'react-router-dom';
 function FormHook() {
+    const loc = useLocation();
+    const nav = useNavigate();
+    console.log(loc.state);
 
     const form = useForm();
     const { register, handleSubmit, formState, getValues } = form;
     function onSubmit(values) {
-        console.log(values);
+        localStorage.setItem('token', "true");
+        if (loc.state) {
+            nav(loc.state);
+        }
+        else
+            nav('/home');
+
     }
 
     return (

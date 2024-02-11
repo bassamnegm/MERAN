@@ -1,15 +1,13 @@
 import './Nav.css'
+import { NavLink } from 'react-router-dom';
 function Nav() {
 
-    let obj = {
-        backgroundColor: 'red',
-    }
     return (
         <ul>
-            <li  ><a className="active" href="#home">Home</a></li>
-            <li style={obj}><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
+            <li  ><NavLink to="/home">Home</NavLink></li>
+            <li ><NavLink to="/login">login</NavLink></li>
+            <li><NavLink to="/movie">movie</NavLink></li>
+            <li><NavLink to="/mui">About</NavLink></li>
         </ul>
     )
 
