@@ -10,6 +10,12 @@ function FormHook() {
     const form = useForm();
     const { register, handleSubmit, formState, getValues } = form;
     function onSubmit(values) {
+        // axios({
+        //     method: "post",
+        //     url: "myurl",
+        //     data: bodyFormData,
+        //     headers: { "Content-Type": "multipart/form-data" },
+        //   })
         localStorage.setItem('token', "true");
         if (loc.state) {
             nav(loc.state);
@@ -49,7 +55,7 @@ function FormHook() {
                     <input
 
                         {...register('pass')}
-                        type="password"
+                        type="file"
                         className="form-control"
                         id="exampleInputPassword1"
                         placeholder="Password"

@@ -1,10 +1,14 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom'
+import { addToFav } from '../Redux/slices/movieSlice';
 
 function MovieCard({ data }) {
     const nav = useNavigate();
+    const dispatch = useDispatch();
     function go() {
-        nav(`/moviedet/${data.id}`, { state: data });
+        dispatch(addToFav(data));
+        // nav(`/moviedet/${data.id}`, { state: data });
     }
     return (
         <div className="card" style={{ width: "18rem" }}>

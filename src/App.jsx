@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./Components/Nav";
 import 'bootstrap/dist/css/bootstrap.css';
 import Form from "./Components/Form";
@@ -10,15 +10,18 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Components/Home";
 import MovieDet from "./Components/MovieDet";
 import Auth from "./Components/Auth";
-import MuiTest from "./Components/MuiTest";
-
+import { counterContext } from "./context/counterContext";
+import Fav from "./Components/Fav";
 function App() {
+
+  const [count, setCount] = useState(1);
   return (
-    <React.Fragment>
+    <counterContext.Provider value={{ count, setCount }}>
       <Nav />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<FormHook />} />
+        <Route path="/fav" element={<Fav />} />
         <Route element={<Auth />}>
           <Route path="/movie" element={<Movie />} />
           <Route path="/moviedet/:id" element={<MovieDet />} />
@@ -26,7 +29,7 @@ function App() {
         <Route path="/mui" element={<Parent />} />
       </Routes>
 
-    </React.Fragment>
+    </counterContext.Provider>
   )
 }
 
